@@ -4,7 +4,16 @@ bin-release/
 [Oo]bj/
 [Bb]in/
 
-# Other files and folders
+# Local Temp File
+.ipynb_checkpoints
+
+# Local Temp Folders
+__pycache__/
+images/
+logs/
+models/
+
+# Other Files and Folders
 .settings/
 
 # Executables

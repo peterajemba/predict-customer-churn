@@ -32,33 +32,6 @@ def import_data(pth):
     # Read the dataframe
     data_frame = pd.read_csv(pth)
     
-    # Define category columns
-    cat_columns = [
-        'Gender',
-        'Education_Level',
-        'Marital_Status',
-        'Income_Category',
-        'Card_Category'
-    ]
-    
-    # Define quantitative columns
-    quant_columns = [
-        'Customer_Age',
-        'Dependent_count', 
-        'Months_on_book',
-        'Total_Relationship_Count', 
-        'Months_Inactive_12_mon',
-        'Contacts_Count_12_mon', 
-        'Credit_Limit', 
-        'Total_Revolving_Bal',
-        'Avg_Open_To_Buy', 
-        'Total_Amt_Chng_Q4_Q1', 
-        'Total_Trans_Amt',
-        'Total_Trans_Ct', 
-        'Total_Ct_Chng_Q4_Q1', 
-        'Avg_Utilization_Ratio'
-    ]
-    
     # Add column to represent Churn
     data_frame['Churn'] = data_frame['Attrition_Flag'].apply(lambda val: 0 if val == "Existing Customer" else 1)
     
@@ -75,28 +48,33 @@ def perform_eda(data_frame):
             None
     '''
     # Create and save histogram for Churn
-    plt.figure(figsize=(20,10))
-    fig_churn = data_frame['Churn'].hist();
-    fig_churn.savefig(r"./images/eda/Churn_Histogram.png")
+    #plt.figure(figsize=(20,10))
+    hist_churn = data_frame['Churn'].hist()
+    fig_churn = hist_churn.get_figure()
+    fig_churn.savefig("./images/eda/Churn_Histogram.png")
     
     # Create and save histogram for Customer Age
-    plt.figure(figsize=(20,10))
-    fig_customer_age = data_frame['Customer_Age'].hist();
-    fig_customer_age.savefig(r"./images/eda/Customer_Age_Histogram.png")
+    #plt.figure(figsize=(20,10))
+    hist_customer_age = data_frame['Customer_Age'].hist()
+    fig_customer_age = hist_customer_age.get_figure()
+    fig_customer_age.savefig("./images/eda/Customer_Age_Histogram.png")
     
     # Create and save histogram for Marital Status
-    plt.figure(figsize=(20,10)) 
-    fig_marital_status = data_frame.Marital_Status.value_counts('normalize').plot(kind='bar');
-    fig_marital_status.savefig(r"./images/eda/Marital_Status_Histogram.png")
+    #plt.figure(figsize=(20,10)) 
+    hist_marital_status = data_frame.Marital_Status.value_counts('normalize').plot(kind='bar');
+    fig_marital_status = hist_marital_status.get_figure()
+    fig_marital_status.savefig("./images/eda/Marital_Status_Histogram.png")
     
     # Create and save histogram for Total Trans Count
-    plt.figure(figsize=(20,10))
-    fig_total_trans_ct = sns.distplot(data_frame['Total_Trans_Ct']);
-    fig_total_trans_ct.savefig(r"./images/eda/Total_Trans_Ct_Plot.png")
+    #plt.figure(figsize=(20,10))
+    hist_total_trans_ct = sns.displot(data_frame['Total_Trans_Ct'])
+    fig_total_trans_ct = hist_total_trans_ct.get_figure()
+    fig_total_trans_ct.savefig("./images/eda/Total_Trans_Ct_Plot.png")
     
     # Create and save heatmap of all features
-    plt.figure(figsize=(20,10))
-    fig_heatmap = sns.heatmap(data_frame.corr(), annot=False, cmap='Dark2_r', linewidths = 2)
+    #plt.figure(figsize=(20,10))
+    hist_heatmap = sns.heatmap(data_frame.corr(), annot=False, cmap='Dark2_r', linewidths = 2)
+    fig_heatmap = hist_heatmap.get_figure()
     fig_heatmap.savefig(r"./images/eda/Heatmap.png")
 
 
@@ -178,4 +156,6 @@ def train_models(X_train, X_test, y_train, y_test):
     '''
     pass
 
-#if __name__ == "__main__"
+if __name__ == "__main__":
+    df = import_data("./data/bank_data.csv")
+    perform_eda(df)

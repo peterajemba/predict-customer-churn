@@ -1,6 +1,6 @@
 import os
 import logging
-import churn_library_solution as cls
+import churn_library as cls
 
 logging.basicConfig(
     filename='./logs/churn_library.log',
@@ -13,6 +13,7 @@ def test_import(import_data):
     '''
     test data import
     '''
+    logging.info("I'm in")
     try:
         df = import_data("./data/bank_data.csv")
         logging.info("Testing import_data: SUCCESS")
@@ -33,7 +34,7 @@ def test_eda(perform_eda):
     '''
     test perform eda function
     '''
-    try:
+    
 
 
 def test_encoder_helper(encoder_helper):
@@ -55,4 +56,6 @@ def test_train_models(train_models):
 
 
 if __name__ == "__main__":
-    pass
+    df = cls.import_data("./data/bank_data.csv")
+    cls.perform_eda(df)
+    
