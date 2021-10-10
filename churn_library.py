@@ -60,6 +60,7 @@ def perform_eda(data_frame, path, save=True):
         plt.savefig(path + "/Churn_Histogram.png")
     else:
         plt.show()
+    plt.close()
 
     # Generate histograms for Customer Age
     plt.figure(figsize=(20, 10))
@@ -68,6 +69,7 @@ def perform_eda(data_frame, path, save=True):
         plt.savefig(path + "/Customer_Age_Histogram.png")
     else:
         plt.show()
+    plt.close()
 
     # Generate histogram for Marital Status
     plt.figure(figsize=(20, 10))
@@ -76,6 +78,7 @@ def perform_eda(data_frame, path, save=True):
         plt.savefig(path + "/Marital_Status_Histogram.png")
     else:
         plt.show()
+    plt.close()
 
     # Generate heatmap of all features
     plt.figure(figsize=(20, 10))
@@ -84,6 +87,7 @@ def perform_eda(data_frame, path, save=True):
         plt.savefig(path + "/Heatmap.png")
     else:
         plt.show()
+    plt.close()
 
     # Generate histogram for Total Trans Count
     plt.figure(figsize=(20, 10))
@@ -92,6 +96,7 @@ def perform_eda(data_frame, path, save=True):
         plt.savefig(path + "/Total_Trans_Ct_Plot.png")
     else:
         plt.show()
+    plt.close()
 
 
 def encoder_helper(data_frame, categories, response):
@@ -249,8 +254,8 @@ def characterize_random_forest_model(
     y_test_preds_rf = rand_forest_model.predict(model_data['x_test'])
 
     # Create image of model characterization report
-    plt.figure(figsize=(5, 5))
-    #plt.rc('figure', figsize=(5, 5))
+    plt.figure()
+    plt.rc('figure', figsize=(8, 8))
     plt.text(0.01, 1.25, str('Random Forest Train'), {
              'fontsize': 10}, fontproperties='monospace')
     plt.text(
@@ -270,6 +275,7 @@ def characterize_random_forest_model(
         plt.savefig(image_path + "/Random_Forest_Metrics.png")
     else:
         plt.show()
+    plt.close()
 
 
 def characterize_logistic_regression_model(
@@ -296,8 +302,8 @@ def characterize_logistic_regression_model(
     y_test_preds_lr = log_reg_model.predict(model_data['x_test'])
 
     # Create image of model characterization report
-    plt.figure(figsize=(5, 5))
-    #plt.rc('figure', figsize=(5, 5))
+    plt.figure()
+    plt.rc('figure', figsize=(8, 8))
     plt.text(0.01, 1.25, str('Logistic Regression Train'),
              {'fontsize': 10}, fontproperties='monospace')
     plt.text(
@@ -317,6 +323,7 @@ def characterize_logistic_regression_model(
         plt.savefig(image_path + "/Logistic_Regression_Metrics.png")
     else:
         plt.show()
+    plt.close()
 
 
 def plot_roc_curves(
@@ -416,6 +423,7 @@ def shapely_plot(model_data, model_path, output_path, save=True):
         plt.savefig(output_path + "/Shapely_Summary_Plot.png")
     else:
         plt.show()
+    plt.close()
 
 
 def feature_importance_plot(model_data, model_path, output_path, save=True):
@@ -454,6 +462,7 @@ def feature_importance_plot(model_data, model_path, output_path, save=True):
         plt.savefig(output_path + "/Feature_Importance_Plot.png")
     else:
         plt.show()
+    plt.close()
 
 
 if __name__ == "__main__":

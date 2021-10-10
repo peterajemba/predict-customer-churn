@@ -13,7 +13,7 @@ The output consists of the following files:
 
 3. `churn_notebook.ipynb` containing a refactored version of the code in Notebook form.
 
-The code in both Python files was formatted using [autopep8](https://pypi.org/project/autopep8/), and both scripts provided [pylint](https://pypi.org/project/pylint/) scores of **10.0/10.0**.
+The code in both Python files was formatted using [autopep8](https://pypi.org/project/autopep8/), and both scripts provided [pylint](https://pypi.org/project/pylint/) scores of close to **10.0/10.0**.
 
 ## Running Files
 The development environment for this project used Python **3.x**. In addition to a base Python installation, install additional libraries by using typing the follwing commands in a terminal:
